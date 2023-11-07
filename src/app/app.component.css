@@ -1,0 +1,9 @@
+/* Alinear elementos a la izquierda */
+.navbar-left {
+    margin-right: auto;
+  }
+  
+  /* Alinear elementos a la derecha */
+  .navbar-right {
+    margin-left: auto;
+  }

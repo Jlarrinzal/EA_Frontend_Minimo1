@@ -1,0 +1,6 @@
+.failure-notification-container {
+    background-color: #4c7031; /* Cambia el color de fondo */
+    color: red; /* Cambia el color del texto */
+    align-items: center;
+    text-align: center;
+  }

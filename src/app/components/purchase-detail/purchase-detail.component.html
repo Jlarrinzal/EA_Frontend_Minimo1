@@ -1,0 +1,53 @@
+<div *ngIf="purchase">
+    <div class="col-md-8 mx-auto">
+      <!-- Detalles de usuario -->
+      <div class="card bg-primary" style="border-radius: 10px;">
+        <div class="card-body">
+          <h2 class="card-title" style="color:#fffcea; background-color:#4c7031; border-radius: 10px;">Datos de {{purchase._id}}</h2>
+          <div class="product-details" style="color:#fffcea;" >
+            <div><span>Id: {{purchase._id}}</span></div>
+            <div><span>Usuario: {{purchase.username}}</span></div>
+            <div><span>Producto: {{purchase.name}}</span></div>
+            <div><span>Unidades: {{purchase.quantity}}</span></div>
+            <div>
+              <div class="form-group" style="text-align: right; margin-top: 10px;">
+                <button type="button" class="btn btn-block"  (click)="delete()" style="border: 1px solid #fffcea; border-radius: 10px; margin-right:10px;">
+                  Borrar compra
+                </button>
+                <button type="button" class="btn btn-block" (click)="toggleUpdateForm()" style="border: 1px solid #fffcea; border-radius: 10px;">
+                  {{ showUpdateForm ? 'Cancelar' : 'Actualizar compra' }}
+                </button>
+                
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Formulario de actualización de usuario -->
+      <div *ngIf="showUpdateForm" class="card bg-primary" style="border-radius: 10px; margin-top: 20px;">
+        <div class="card-body">
+          <h2 class="card-title" style="color:#fffcea; background-color:#4c7031; border-radius: 10px;">Actualizar compra</h2>
+          <form (submit)="update()">
+            <div class="form-group"style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;">
+              <input type="text" [(ngModel)]="purchaseupdate.username" name="user" style="border-radius: 10px; margin-bottom: 10px; background-color:#fffcea; color:#1D1D1B;"class="form-control" placeholder="Usuario" required autofocus>
+            </div>
+            <div class="form-group"style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;">
+              <input type="text" [(ngModel)]="purchaseupdate.name" name="product" class="form-control" style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;" placeholder="Producto" required autofocus>
+            </div>
+            <div class="form-group"style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;">
+              <input type="text" [(ngModel)]="purchaseupdate.quantity" name="Unidades" class="form-control" style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;" placeholder="Unidades" required autofocus>
+            </div>
+            <div class="form-group" style="text-align: right; margin-top: 10px;">
+              <button type="submit" class="btn btn-block" style="border: 1px solid #fffcea; border-radius: 10px; margin-right:10px;">
+               Guardar cambios
+              </button>
+              <button type="button" class="btn btn-block" (click)="cancelUpdate()" style="border: 1px solid #fffcea; border-radius: 10px;">
+                Cancelar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

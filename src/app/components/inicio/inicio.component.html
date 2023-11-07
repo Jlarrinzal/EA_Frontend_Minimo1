@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 60vh;
+      margin: 0;
+    }
+
+    .content-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .image-container {
+      text-align: center;
+      flex: 1; /* Ocupa la mitad del espacio disponible en horizontal */
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .form-container {
+      flex: 1; /* Ocupa la otra mitad del espacio disponible en horizontal */
+      text-align: center;
+    }
+
+    .card {
+      border-radius: 10px;
+      background-color: #fffcea;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <h2 style="color:#4c7031; text-align: center; font-size: 50px;">BIENVENIDO</h2>
+  </div>
+  <div class="content-container">
+    <div class="image-container">
+      <img src="https://pbs.twimg.com/media/F7HYLJOXUAAZeRL?format=jpg&name=large" alt="logo" />
+    </div>
+    <div class="form-container">
+      <div class="card bg-primary">
+        <div class="card-header" style="color:#fffcea; background-color:#4c7031; border-radius: 10px; font-size: 30px; text-align: center;">
+          Log In
+        </div>
+        <div class="card-body">
+          <form (submit)="signIn()">
+            <div class="form-group" style="border-radius: 10px; margin-bottom: 10px; background-color:#fffcea; color:#1D1D1B;">
+              <input type="text" [(ngModel)]="user.email" name="email" class="form-control" placeholder="Email" required autofocus>
+            </div>
+            <div class="form-group" style="border-radius: 10px; margin-bottom: 10px; background-color:#fffcea; color:#1D1D1B;">
+              <input type="password" [(ngModel)]="user.password" name="password" class="form-control" placeholder="Password" required>
+            </div>
+            <div class="form-group" style="text-align: center; margin-top: 10px;">
+              <button type="submit" class="btn btn-block" style="border: 1px solid #fffcea; border-radius: 10px; text-align: center;">
+                Log In
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
