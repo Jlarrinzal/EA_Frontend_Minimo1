@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="row">
+      <!-- Columna izquierda con el botón para mostrar/ocultar el formulario -->
+      <div class="col-md-4 mx-auto">
+        <button class="btn bg-primary " (click)="toggleFormVisibility()" style="border-radius: 10px; margin-top: 20px; color:#fffcea;"  >
+          {{ showAddForm ? 'Ocultar Formulario' : 'Crear review' }}
+        </button>
+        <div class="card bg-primary" *ngIf="showAddForm" style="border-radius: 10px; margin-top: 20px;">
+          <div class="card-header " style="color:#fffcea; background-color:#4c7031; border-radius: 10px;font-size: 30px; text-align: center;">
+            Crear Review
+          </div>
+          <div class="card-body">
+            <form (submit)="add()">
+              <div class="form-group"style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;">
+                <input type="text" [(ngModel)]="review.userId" name="UserId" style="border-radius: 10px; margin-bottom: 10px; background-color:#fffcea; color:#1D1D1B;"class="form-control" placeholder="UserId" required autofocus>
+              </div>
+              <div class="form-group"style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;">
+                <input type="text" [(ngModel)]="review.stars" name="Stars" class="form-control" style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;" placeholder="Stars" required autofocus>
+              </div>
+              <div class="form-group"style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;">
+                <input type="text" [(ngModel)]="review.productId" name="ProductId" class="form-control" style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;" placeholder="ProductId" required autofocus>
+              </div>
+              <div class="form-group"style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;">
+                <input type="text" [(ngModel)]="review.like" name="Like" class="form-control" style="border-radius: 10px; margin-bottom: 10px;background-color:#fffcea;color:#1D1D1B;" placeholder="Like (true or false)" required autofocus>
+              </div>
+              <div class="form-group" style="text-align: center; margin-top: 10px;">
+                <button type="submit" class="btn btn-block" style="border: 1px solid #fffcea; border-radius: 10px; text-align: center; margin-left: auto; margin-right: auto;">
+                  Añadir Review
+                </button>
+              </div>            
+            </form>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Columna derecha con la lista de purchase dentro de una tarjeta -->
+      <div class="col-md-6 mx-auto" style="margin-top: 20px;" style="margin: 10px">
+        <div class="card bg-primary" style="border-radius: 10px; width: 100%;">
+          <div class="card-body">
+            <h2 class="card-title" style="color:#fffcea; margin-bottom: 20px; background-color:#4c7031; border-radius: 10px; text-align: center;" >Lista de Reviews</h2>
+            <div class="user-list-container">
+              <ol class="user-list">
+                <li *ngFor="let review of reviews">
+                  <a routerLink="/reviewdetail/{{review._id}}">
+                    <div class="review-info">
+                      <div class="review-badge">
+                        <span class="review text-left">
+                          <span>Id: {{review._id}}</span>   
+                          <span class="review">         User: {{review.userId}}</span>
+                          <span class="review">         Stars: {{review.stars}}</span>
+                          <span class="review">         Product: {{review.productId}}</span>
+                          <span class="review">         Like: {{review.like}}</span>
+                        </span>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ol>
+            </div>
+             <!-- Paginación centrada verticalmente -->
+          <div class="pagination" style="margin-top: auto; display: flex; justify-content: center; color:#fffcea;">
+            <button type="button" [disabled]="currentPage === 1" style="border: 1px solid #fffcea; border-radius: 10px; text-align: center; background-color:#4c7031; color:#fffcea; margin-right: 10px;" (click)="previousPage()"> Anterior </button>
+            <span> Página {{currentPage}} de {{totalPages}} </span>
+            <button type="button"[disabled]="currentPage === totalPages" style="border: 1px solid #fffcea; border-radius: 10px; text-align: center; background-color:#4c7031; color:#fffcea; margin-left: 10px;" (click)="nextPage()"> Siguiente </button>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>

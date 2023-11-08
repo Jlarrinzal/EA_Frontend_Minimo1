@@ -7,6 +7,8 @@ import { ProductComponent } from './components/product/product.component';
 import { ProductDetailComponent } from './components/product-detail/product-detail.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
 import { PurchaseDetailComponent } from './components/purchase-detail/purchase-detail.component';
+import { ReviewComponent } from './components/review/review.component';
+import { ReviewDetailComponent } from './components/review-detail/review-detail.component';
 
 const routes: Routes = [
 {
@@ -41,6 +43,14 @@ const routes: Routes = [
 {
   path: 'purchasedetail/:_id',
   component: PurchaseDetailComponent
+},
+{
+  path: 'review',
+  component: ReviewComponent
+},
+{
+  path: 'reviewdetail/:_id',
+  component: ReviewDetailComponent
 }
 ];
 
